@@ -1,11 +1,25 @@
 <div class="cmailInputForm">
   <div
-    [ngClass]="{ 'is-invalid': campo.invalid && campo.touched }"
+    [ngClass]="{ 'is-invalid': campo.invalid && (campo.touched || campo.dirty) }"
     class="mdl-textfield mdl-textfield--floating-label">
 
     <ng-content></ng-content> <!-- Input -->
+    {{ campo.errors | json }}
+    <span *ngIf="campo.errors?.required" class="mdl-textfield__error">
+        Este campo é obrigatório
+    </span>
+    <span *ngIf="campo.errors?.minlength" class="mdl-textfield__error">
+        Você precisa colocar pelo menos {{ campo.errors?.minlength.requiredLength }} caracteres
+        e colocou apenas {{ campo.errors?.minlength.actualLength }}
+    </span>
+    <span *ngIf="campo.errors?.maxlength" class="mdl-textfield__error">
+        Você precisa colocar no máximo {{ campo.errors?.maxlength.requiredLength }} caracteres
+        e você já colocou {{ campo.errors?.maxlength.actualLength }}
+    </span>
+
 
     <label class="mdl-textfield__label" for="para">{{ valorDoPlaceholder }}: </label>
     <span class="mdl-textfield__formline"></span>
   </div>
 </div>
+

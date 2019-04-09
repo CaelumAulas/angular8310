@@ -1,40 +1,59 @@
 <!-- Procurar por Schematics -->
-<form>
-  <!-- [Para] -->
-  <cmail-form-field campo="campoNome">
-    <input
-      #campoNome="ngModel"
-      [(ngModel)]="novoUsuario.nome"
-      class="mdl-textfield__input"
-      name="nome" id="nome"
-      placeholder="Nome">
+<form [formGroup]="formCadastro" (submit)="handleCadastro()">
+  <cmail-form-field [campo]="formCadastro.get('nome')">
+      <input
+        formControlName="nome" cmailFormInput
+        name="nome" id="nome" placeholder="Nome">
   </cmail-form-field>
 
-  <!-- <div class="cmailInputForm">
-    <div
-    [ngClass]="{ 'is-invalid': campoNome.invalid && campoNome.touched }"
-    class="mdl-textfield mdl-textfield--floating-label">
+  <cmail-form-field [campo]="formCadastro.get('username')">
       <input
-        #campoNome="ngModel"
-        [(ngModel)]="novoUsuario.nome"
-        required type="text" name="nome"
-        id="nome" placeholder=" " class="mdl-textfield__input">
-      <span class="mdl-textfield__error">Informar um nome é obrigatório!</span>
-      <label class="mdl-textfield__label" for="para">Nome: </label>
-      <span class="mdl-textfield__formline"></span>
-    </div>
-  </div> -->
-  <!-- ./[Para] -->
+        formControlName="username" cmailFormInput
+        name="username" id="username" placeholder="Username">
+  </cmail-form-field>
+
+  <cmail-form-field [campo]="formCadastro.get('senha')">
+      <input
+        formControlName="senha" cmailFormInput
+        name="senha" id="senha" placeholder="Senha">
+  </cmail-form-field>
 
 
+  {{ formCadastro.get('avatar').status }}
+  <cmail-form-field [campo]="formCadastro.get('avatar')">
+      <input
+        formControlName="avatar" cmailFormInput
+        name="avatar" id="avatar" placeholder="Avatar">
+      <span *ngIf="formCadastro.get('avatar').status === 'PENDING'" class="mdl-textfield__error">
+        Aguarde um instante...
+      </span>
+      <span *ngIf="formCadastro.get('avatar').status === 'VALID'" class="mdl-textfield__error">
+        Tudo certo!
+      </span>
+  </cmail-form-field>
 
+  <cmail-form-field [campo]="formCadastro.get('telefone')">
+      <input
+        formControlName="telefone" cmailFormInput
+        name="telefone" id="telefone" placeholder="Telefone">
+      <span *ngIf="formCadastro.get('telefone').errors?.pattern" class="mdl-textfield__error">
+        Coloque um telefone ( 2222-2222 ) e um celular ( 9-8888-7777 )
+      </span>
+  </cmail-form-field>
+
+  <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+    Button
+  </button>
 </form>
+<!-- ## Reactive Forms Module
 - Nome
-  - preenchido
-
-<!-- - Telefone
-- CPF
-- Avatar
-  - Se é uma URL válida
-- Email
-- Senha -->
+  - required
+- Username [@cmail.com.br]
+  - required
+- Senha
+  - required
+    - min length
+- Avatar (vamos receber uma URL)
+    - validação assincrona
+- Telefone
+    - Validação via Regex -->
