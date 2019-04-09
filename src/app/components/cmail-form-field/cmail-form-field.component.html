@@ -1,0 +1,11 @@
+<div class="cmailInputForm">
+  <div
+    [ngClass]="{ 'is-invalid': campo.invalid && campo.touched }"
+    class="mdl-textfield mdl-textfield--floating-label">
+
+    <ng-content></ng-content> <!-- Input -->
+
+    <label class="mdl-textfield__label" for="para">{{ valorDoPlaceholder }}: </label>
+    <span class="mdl-textfield__formline"></span>
+  </div>
+</div>
