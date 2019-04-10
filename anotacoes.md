@@ -47,7 +47,9 @@
 - https://hipsters.tech/pull-requests-e-code-review-hipsters-64/ (eu sei que não é facil implementar, mas n custa tentar sem ngm saber)
 - Como lidar com ngClass no react é meio estranho: https://medium.com/@omariosouto/001-como-lidar-de-uma-forma-mais-feliz-com-classes-css-condicionais-no-react-dicas-de-react-915c13a2ab0e
 - https://medium.com/equals-lab/princ%C3%ADpios-s-o-l-i-d-o-que-s%C3%A3o-e-porque-projetos-devem-utiliz%C3%A1-los-bf496b82b299
-- 
+- Mono repos com angular: https://medium.com/@angularlicious/monorepo-angular-packaged-libs-you-can-have-your-cake-and-eat-it-too-8c5687c4ffe9
+- Configurando o Lerna: https://itnext.io/guide-react-app-monorepo-with-lerna-d932afb2e875
+- Preparando app pro deploy: https://blog.caelum.com.br/como-preparar-uma-aplicacao-react-para-o-deploy/
 
 
 ## Formularios no Angular
@@ -92,6 +94,17 @@
 - Refactoring: https://www.amazon.com.br/Refactoring-Improving-Existing-Addison-Wesley-Signature-ebook/dp/B07LCM8RG2?tag=goog0ef-20&smid=A18CNA8NWQSYHH&ascsubtag=go_1686871380_65779544836_327582895583_pla-581169666159_c_
 - https://www.casadocodigo.com.br/products/livro-oo-solid
 - 
+
+
+## Funções no JavaScript
+// function
+- This varia de acordo com o contexto de execução
+    - 
+// arrow function
+- this é sempre o do contexto de criação
+    - Lexical Context
+        - Leitura
+
 
 ## Gerando senhas seguras
 - https://blog.alura.com.br/como-criar-uma-boa-senha/

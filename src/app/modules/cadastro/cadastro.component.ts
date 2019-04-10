@@ -11,14 +11,16 @@ import { map, catchError } from 'rxjs/operators';
 export class CadastroComponent {
   formCadastro: FormGroup;
 
+  errors = [];
+
   constructor(private httpClient: HttpClient) {
     this.formCadastro = new FormGroup({
-      nome: new FormControl('', [Validators.required, Validators.minLength(10)]),
-      username: new FormControl('', [Validators.required, Validators.maxLength(20)]),
-      senha: new FormControl('', [Validators.required]),
+      nome: new FormControl('Mario Souto', [Validators.required, Validators.minLength(10)]),
+      username: new FormControl('omariosouto', [Validators.required, Validators.maxLength(20)]),
+      senha: new FormControl('123456', [Validators.required]),
       // https://regex101.com/r/zI2ezO/4/
-      telefone: new FormControl('', [Validators.required, Validators.pattern(/^\d{4,7}-?\d{4}$/)]),
-      avatar: new FormControl('', [Validators.required], this.validaImagem),
+      telefone: new FormControl('988887777', [Validators.required, Validators.pattern(/^\d{4,7}-?\d{4}$/)]),
+      avatar: new FormControl('https://avatars0.githubusercontent.com/u/13791385?s=460&v=4', [Validators.required], this.validaImagem),
     });
 
   }
@@ -32,12 +34,15 @@ export class CadastroComponent {
         map((respostaDoServer) => {
           // Array => Array de outra coisa
           // Fluxo de dados => Fluxo de dados de outra coisa
-          // console.log(respostaDoServer);
-          return respostaDoServer.ok ? null : { isImagemInvalida: true }
+          const isImageValid = respostaDoServer.headers
+            .get('content-type')
+            .includes('image');
+
+          return isImageValid ? null : { isImagemInvalid: true };
         }),
         catchError((err) => {
           console.log(err);
-          return [{ isImagemInvalida: true }];
+          return [{ isImagemInvalid: true }];
         })
       );
   }
@@ -49,8 +54,31 @@ export class CadastroComponent {
   }
 
   handleCadastro() {
+    // 1 - Atualizar o handleCadastro
     this.marcandoControlsComoTouched();
     if (this.formCadastro.valid) {
+      const usuarioParaAPIDTO = {
+        name: this.formCadastro.value.nome,
+        username: this.formCadastro.value.username,
+        avatar: this.formCadastro.value.avatar,
+        phone: this.formCadastro.value.telefone,
+        password: this.formCadastro.value.senha,
+      };
+
+      this.httpClient.post('http://localhost:3200/users', usuarioParaAPIDTO)
+        .subscribe(
+          (respostaDoServer) => { // sucesso
+            console.log('Cadastrou o usuário', respostaDoServer);
+          },
+          (erro) => {
+            this.errors = erro.error.body;
+            // []
+
+
+            // 2 - Criar uma área emabaixo do form, mostrando os erros que rolaram
+          }
+        );
+
       alert('Pode cadastrar, sucessinhos!');
     } else {
       alert('Deu ruim :(');
