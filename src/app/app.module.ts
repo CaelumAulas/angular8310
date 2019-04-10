@@ -1,27 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { LoginPageComponent } from './modules/login/login-page.component';
 import { roteamentoDaNossaAppzinha } from './app.routes';
 import { InboxComponent } from './modules/inbox/inbox.component';
+import { LoginPageModule } from './modules/login/login-page.module';
+import { AuthUserGuard } from './shared/guards/auth-user.guard';
 
 @NgModule({
   declarations: [ // Componentes, Diretivas (vamos ver dps)
     AppComponent,
-    LoginPageComponent,
     InboxComponent,
   ],
   imports: [ // Sempre módulos com funcionalidades/pagina / Módulos de Libs
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule, // import { HttpClientModule } from '@angular/common/http';
+    LoginPageModule,
     roteamentoDaNossaAppzinha
   ],
-  providers: [],
+  providers: [
+    AuthUserGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

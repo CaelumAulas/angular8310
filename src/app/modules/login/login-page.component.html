@@ -1,6 +1,41 @@
-assaauhsauhahua
+<div class="mdl-layout mdl-js-layout">
+  <main class="mdl-layout__content">
+  <div class="page-content">
+    <div class="mdl-grid">
+      <article class="demo-card-wide mdl-card mdl-shadow--2dp">
+        <header class="mdl-card__title">
+          <h1 class="mdl-card__title-text">Bem vindos/as ao CMail!</h1>
+        </header>
 
-1 - Criar o módulo do Login
-  - Trazer o CmailFormFieldModule
-2 - Criar o sisteminha de roteamento só pro login
-3 - Trazer o login como Lazy Load (loadChildren no routes)
+        <form #formLogin="ngForm" (submit)="handleLoginSubmit(formLogin)" autocomplete="off" class="mdl-card__supporting-text">
+          <cmail-form-field [campo]="campoEmail">
+            <input
+              #campoEmail="ngModel"
+              [(ngModel)]="dadosLogin.email"
+              cmailFormInput required email
+              name="email" id="email" placeholder="Email" type="email">
+          </cmail-form-field>
+
+          <cmail-form-field [campo]="campoSenha">
+            <input
+              #campoSenha="ngModel"
+              [(ngModel)]="dadosLogin.senha"
+              cmailFormInput required
+              name="senha" id="senha" placeholder="Senha" type="password">
+        </cmail-form-field>
+
+          <div class="mdl-card__actions mdl-card--border">
+            <a routerLink="cadastro" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+              Primeiro login? Cadastre-se!
+            </a>
+            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent entrar">
+              Entrar
+            </button>
+          </div>
+        </form>
+
+      </article>
+    </div>
+  </div>
+  </main>
+  </div>
