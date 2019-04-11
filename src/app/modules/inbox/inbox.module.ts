@@ -8,11 +8,13 @@ import { SharedComponentsModule } from 'src/app/shared/components/shared-compone
 import { HttpClientModule } from '@angular/common/http';
 import { EmailService } from './services/email.service';
 import { CmailEmailListItemComponent } from './components/cmail-email-list-item/cmail-email-list-item.component';
+import { FiltraEmailPorConteudoPipe } from './pipes/filtra-email-por-conteudo.pipe';
 
 @NgModule({
   declarations: [
     InboxComponent,
-    CmailEmailListItemComponent
+    CmailEmailListItemComponent,
+    FiltraEmailPorConteudoPipe
   ],
   imports: [
     CommonModule, // Várias diretivas e coisas default do Angular

@@ -4,13 +4,20 @@
   <main class="mdl-layout__content">
     <div class="page-content">
 
+
+      {{ emails[0] | json }}
+      <input type="text"
+        (input)="0"
+        #buscaGambiarra
+        placeholder="Filtra ai manolo" />
       <ul>
         <cmail-email-list-item
-          *ngFor="let emailAtual of emails"
+          *ngFor="let emailAtual of emailsFilteredBy('para', buscaGambiarra.value)"
           [para]="emailAtual.para"
           [assunto]="emailAtual.assunto"
           [conteudo]="emailAtual.conteudo"
-          [data]="emailAtual.dataDeCriacao">
+          [data]="emailAtual.dataDeCriacao"
+          (quandoAlguemClicouNoRemove)="removeEmailHandler(emailAtual.id)">
         </cmail-email-list-item>
       </ul>
 

@@ -11,6 +11,7 @@ interface EmailFromServer {
   subject: string;
   content: string;
   created_at: string;
+  id: string;
 }
 
 interface EmailFromScreenCreate {
@@ -43,7 +44,8 @@ export class EmailService {
                   emailFromServer.to,
                   emailFromServer.subject,
                   emailFromServer.content,
-                  emailFromServer.created_at);
+                  emailFromServer.created_at,
+                  emailFromServer.id);
             });
           return arrayOfEmails;
         })
@@ -60,9 +62,16 @@ export class EmailService {
               emailDoServidor.to,
               emailDoServidor.subject,
               emailDoServidor.content,
-              emailDoServidor.created_at
+              emailDoServidor.created_at,
+              emailDoServidor.id
             );
         })
       );
+    }
+
+    removeById(emailId: string): Observable<any> {
+      return this.httpClient.delete(`${environment.emailAPI}/${emailId}`, {
+        headers: this.headers
+      });
     }
 }

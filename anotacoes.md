@@ -151,6 +151,11 @@
     - Propagar um dado de um componente filho pro pai
 
 
+## Fazendo SEO
+- com Angular https://angular.io/guide/universal
+- Se for fazer site estático, usa isso aqui: https://developer.wordpress.org/rest-api/
+
+
 ## Trabalhando com data
 - https://momentjs.com/
 - https://angular.io/api/common/DatePipe

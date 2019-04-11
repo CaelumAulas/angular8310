@@ -26,6 +26,11 @@ export class InboxComponent {
       .subscribe((emails: Array<Email>) => {
         this.emails = emails;
       });
+
+    // setInterval(() => {
+    //   // pega os ultimos 30 tweets
+    //   this.emails = [...novosTweets, ...this.emails]
+    // }, 20000)
   }
 
 
@@ -60,5 +65,30 @@ export class InboxComponent {
 
     }
     return false;
+  }
+
+
+  removeEmailHandler(emailIdDoQueVaiSumir: string) {
+    console.log('Clicando através da tela ˜inbox˜');
+    // Implementem o removeById mandando um delete para /emails/:idDoEmail
+    // Removam o tweet da tela também
+    this.emailService.removeById(emailIdDoQueVaiSumir)
+      .subscribe(() => {
+        console.log('Email removido com sucessinhos!');
+        this.emails = this.emails
+          .filter((email: Email) => email.id !== emailIdDoQueVaiSumir);
+
+        // this.emailService.getInboxEmails().subscribe((emails: Array<Email>) => {
+        //   this.emails = emails;
+        // });
+      });
+  }
+
+  emailsFilteredBy(param, valorDoFiltro) {
+    const textoDoCampoLowerCase = valorDoFiltro.toLowerCase();
+    return this.emails.filter((email) => {
+      const conteudoEmailLowerCase = email[param].toLowerCase();
+      return conteudoEmailLowerCase.includes(textoDoCampoLowerCase);
+    });
   }
 }
