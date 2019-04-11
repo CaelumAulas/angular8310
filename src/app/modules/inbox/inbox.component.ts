@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { EmailService } from './services/email.service';
 import { Email } from './domain/Email';
+import { HeaderService } from 'src/app/shared/components/HeaderGlobal/header.service';
 
 @Component({
   selector: 'page-inbox',
@@ -19,25 +20,41 @@ export class InboxComponent {
   };
 
   isNewEmailFormActive = false;
+  filtroAtualDosEmails = 'adssadsad';
 
+
+  subscriptions = [];
+
+  constructor(
+    private emailService: EmailService, private headerService: HeaderService
+  ) {
+
+    this.subscriptions.push(
+      headerService.valorDoFiltro.subscribe((valorDaBusca) => {
+        console.log('Estou ouvindo de dentro do inbox.component', valorDaBusca);
+        this.filtroAtualDosEmails = valorDaBusca;
+      })
+    );
+  }
 // tslint:disable-next-line: use-life-cycle-interface
+  ngOnDestroy() {
+    console.log('Saindo da home');
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
+  }
+
+  // tslint:disable-next-line: use-life-cycle-interface
   ngOnInit() {
     this.emailService.getInboxEmails()
       .subscribe((emails: Array<Email>) => {
         this.emails = emails;
       });
 
+
     // setInterval(() => {
     //   // pega os ultimos 30 tweets
     //   this.emails = [...novosTweets, ...this.emails]
     // }, 20000)
   }
-
-
-
-  constructor(
-      private emailService: EmailService
-  ) {}
 
   toggleNewEmailFormActive() {
     this.isNewEmailFormActive = !this.isNewEmailFormActive;
@@ -53,14 +70,14 @@ export class InboxComponent {
         subject: this.novoEmail.assunto,
         content: this.novoEmail.conteudo
       })
-      .subscribe(
-        (email: Email) => {
-          this.emails.push(email);
-          this.novoEmail = { para: '', assunto: '', conteudo: '' };
-          formNovoEmail.resetForm();
-          this.toggleNewEmailFormActive();
-        }
-      );
+        .subscribe(
+          (email: Email) => {
+            this.emails.push(email);
+            this.novoEmail = { para: '', assunto: '', conteudo: '' };
+            formNovoEmail.resetForm();
+            this.toggleNewEmailFormActive();
+          }
+        );
 
 
     }

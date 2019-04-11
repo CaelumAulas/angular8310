@@ -1,18 +1,11 @@
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
   <header-global titulo="Inbox do Cmail (vindo agora de quem chama)" ></header-global>
-
+  {{ filtroAtualDosEmails }}
   <main class="mdl-layout__content">
     <div class="page-content">
-
-
-      {{ emails[0] | json }}
-      <input type="text"
-        (input)="0"
-        #buscaGambiarra
-        placeholder="Filtra ai manolo" />
       <ul>
         <cmail-email-list-item
-          *ngFor="let emailAtual of emailsFilteredBy('para', buscaGambiarra.value)"
+          *ngFor="let emailAtual of emailsFilteredBy('para', filtroAtualDosEmails)"
           [para]="emailAtual.para"
           [assunto]="emailAtual.assunto"
           [conteudo]="emailAtual.conteudo"
