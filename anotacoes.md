@@ -52,8 +52,9 @@
 - Preparando app pro deploy: https://blog.caelum.com.br/como-preparar-uma-aplicacao-react-para-o-deploy/
 - Mais exemplos de códegos em JavaScript: https://www.youtube.com/watch?v=kjhu1LEmRpY&list=PLMdYygf53DP4YTVeu0JxVnWq01uXrLwHi
 - Exemplos de mais coisas com JS: https://javascript30.com/
-
-
+- Lidando com variaveis de ambiente no angular: https://medium.com/beautiful-angular/angular-2-and-environment-variables-59c57ba643be
+- https://www.youtube.com/watch?v=Nsjsiz2A9mg
+- Alternativa pra estudar Java de grátis: https://www.caelum.com.br/apostila-java-orientacao-objetos/variaveis-primitivas-e-controle-de-fluxo/#declarando-e-usando-variveis
 
 
 ## Formularios no Angular

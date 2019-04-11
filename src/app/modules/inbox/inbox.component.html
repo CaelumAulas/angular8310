@@ -6,7 +6,7 @@
 
       <ul>
         <li *ngFor="let emailAtual of emails">
-          email: {{ emailAtual.email }}<br />
+          email: {{ emailAtual.para }}<br />
           assunto: {{ emailAtual.assunto }} <br />
           conteudo: {{ emailAtual.conteudo }} <br />
         </li>
@@ -40,7 +40,7 @@
                   <!-- (input)="novoEmail.email = $event.target.value" [value]="novoEmail.email" -->
                   <input
                     #campoEmail="ngModel"
-                    [(ngModel)]="novoEmail.email"
+                    [(ngModel)]="novoEmail.para"
                     required type="email" name="para" email
                     id="para" placeholder=" " class="mdl-textfield__input">
                   <span class="mdl-textfield__error">Informar um email é obrigatório!</span>
