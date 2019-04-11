@@ -10,6 +10,13 @@ interface EmailFromServer {
   to: string;
   subject: string;
   content: string;
+  created_at: string;
+}
+
+interface EmailFromScreenCreate {
+  to: string;
+  subject: string;
+  content: string;
 }
 
 // ... Vocês no comando...
@@ -31,17 +38,19 @@ export class EmailService {
         map((emails: Array<any>) => {
           const arrayOfEmails = emails
             .map( (emailFromServer: EmailFromServer) => {
+              console.log(emailFromServer.created_at);
               return new Email(
                   emailFromServer.to,
                   emailFromServer.subject,
-                  emailFromServer.content);
+                  emailFromServer.content,
+                  emailFromServer.created_at);
             });
           return arrayOfEmails;
         })
       );
     }
 
-    send({ to, subject, content }: EmailFromServer): Observable<Email> {
+    send({ to, subject, content }: EmailFromScreenCreate): Observable<Email> {
       return this.httpClient.post(environment.emailAPI, { to, subject, content }, {
         headers: this.headers
       })
@@ -50,7 +59,8 @@ export class EmailService {
           return new Email(
               emailDoServidor.to,
               emailDoServidor.subject,
-              emailDoServidor.content
+              emailDoServidor.content,
+              emailDoServidor.created_at
             );
         })
       );

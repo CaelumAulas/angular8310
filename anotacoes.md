@@ -135,3 +135,22 @@
     - Preparar o código pra saber se pode enviar ou nao
 - Enviar os dados pro backend
     - Preparar os dados que vieram do form pra isso
+
+
+## Classes de Domínio (representação de alguma entidade)
+- Sempre enviamos os dados minimos pra criar/atualizar/editar e recuperamos eles via interface nos serviços (ou quando o dado vem do server)
+  - Na hora de devolver a partir de uma entrada o dado para a camada do componente, criamos o objeto
+
+## Guia do ultimo dia 
+- Como deixar os emails mais bonitos
+- Pipe
+    - Como lidar com datas
+- Removendo emails
+    - Propagar um dado de um componente filho pro pai
+- Busca (Pipe)
+    - Propagar um dado de um componente filho pro pai
+
+
+## Trabalhando com data
+- https://momentjs.com/
+- https://angular.io/api/common/DatePipe

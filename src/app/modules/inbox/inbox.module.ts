@@ -7,10 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { SharedComponentsModule } from 'src/app/shared/components/shared-components.module';
 import { HttpClientModule } from '@angular/common/http';
 import { EmailService } from './services/email.service';
+import { CmailEmailListItemComponent } from './components/cmail-email-list-item/cmail-email-list-item.component';
 
 @NgModule({
   declarations: [
-    InboxComponent
+    InboxComponent,
+    CmailEmailListItemComponent
   ],
   imports: [
     CommonModule, // Várias diretivas e coisas default do Angular

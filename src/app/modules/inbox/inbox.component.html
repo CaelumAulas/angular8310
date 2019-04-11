@@ -5,11 +5,13 @@
     <div class="page-content">
 
       <ul>
-        <li *ngFor="let emailAtual of emails">
-          email: {{ emailAtual.para }}<br />
-          assunto: {{ emailAtual.assunto }} <br />
-          conteudo: {{ emailAtual.conteudo }} <br />
-        </li>
+        <cmail-email-list-item
+          *ngFor="let emailAtual of emails"
+          [para]="emailAtual.para"
+          [assunto]="emailAtual.assunto"
+          [conteudo]="emailAtual.conteudo"
+          [data]="emailAtual.dataDeCriacao">
+        </cmail-email-list-item>
       </ul>
 
       <div class="mdl-grid">
