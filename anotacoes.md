@@ -50,6 +50,10 @@
 - Mono repos com angular: https://medium.com/@angularlicious/monorepo-angular-packaged-libs-you-can-have-your-cake-and-eat-it-too-8c5687c4ffe9
 - Configurando o Lerna: https://itnext.io/guide-react-app-monorepo-with-lerna-d932afb2e875
 - Preparando app pro deploy: https://blog.caelum.com.br/como-preparar-uma-aplicacao-react-para-o-deploy/
+- Mais exemplos de códegos em JavaScript: https://www.youtube.com/watch?v=kjhu1LEmRpY&list=PLMdYygf53DP4YTVeu0JxVnWq01uXrLwHi
+- Exemplos de mais coisas com JS: https://javascript30.com/
+
+
 
 
 ## Formularios no Angular
@@ -93,7 +97,8 @@
 - Mythical Man Month
 - Refactoring: https://www.amazon.com.br/Refactoring-Improving-Existing-Addison-Wesley-Signature-ebook/dp/B07LCM8RG2?tag=goog0ef-20&smid=A18CNA8NWQSYHH&ascsubtag=go_1686871380_65779544836_327582895583_pla-581169666159_c_
 - https://www.casadocodigo.com.br/products/livro-oo-solid
-- 
+- DDD primeira parte: https://www.submarino.com.br/produto/50306100/livro-implementando-domain-driven-design-vernon?WT.srch=1&acc=d47a04c6f99456bc289220d5d0ff208d&epar=bp_pl_00_go_g35177&gclid=EAIaIQobChMI_tbrxIzI4QIVhRGRCh0o5AcVEAQYBSABEgKLW_D_BwE&i=57ef7074eec3dfb1f834a9b2&o=5c3e9c936c28a3cb5052d38d&opn=XMLGOOGLE&sellerId=77824266000183
+- DDD Do Erick Evans: https://www.google.com/shopping/product/6951901981461819391?lsf=seller:6243886,store:9367645450747801547,lsfqd:0&prds=oid:17348319947677384318&q=livro&hl=pt-BR&ei=fDqvXKHHCIPC5OUPh_yy2A4&utm_source=store&lsft=gclid:EAIaIQobChMIrsavsYzI4QIVhw-RCh2LaAhJEAQYAiABEgIzRPD_BwE
 
 
 ## Funções no JavaScript

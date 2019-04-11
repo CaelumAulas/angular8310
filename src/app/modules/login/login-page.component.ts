@@ -23,6 +23,10 @@ export class LoginPageComponent {
         email: this.dadosLogin.email,
         password: this.dadosLogin.senha
       };
+
+      // Extrair lógica do Componente
+        // - 1
+
       this.loginService.logar(formLoginParaAPIDTO)
         .subscribe(
           () => {

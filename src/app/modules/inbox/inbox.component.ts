@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { EmailService } from './services/email.service';
 
 @Component({
   selector: 'page-inbox',
@@ -22,12 +23,16 @@ export class InboxComponent {
   ];
 
   novoEmail = {
-    email: '',
-    assunto: '',
-    conteudo: ''
+    email: 'eu@cmail.com',
+    assunto: 'Email muito louco',
+    conteudo: 'lorem ipsum x'
   };
 
   isNewEmailFormActive = false;
+
+  constructor(
+      private emailService: EmailService
+  ) {}
 
   toggleNewEmailFormActive() {
     this.isNewEmailFormActive = !this.isNewEmailFormActive;
@@ -38,6 +43,24 @@ export class InboxComponent {
     // fazer o push no array de emails
     // this.emails.push(Object.assign({}, this.novoEmail));
     if (formNovoEmail.valid) {
+
+      this.emailService.send({
+        to: this.novoEmail.email,
+        subject: this.novoEmail.assunto,
+        content: this.novoEmail.conteudo
+      })
+      .subscribe(
+        (respostaDoServer) => {
+          this.toggleNewEmailFormActive();
+        }
+      );
+
+
+      // Antes do push
+        // POST para: http://localhost:3200/emails
+          // to, subject, content
+          // lembrar de mandar o token para o servidor [header authorization]
+
       this.emails.push({
         ...this.novoEmail
       });

@@ -11,10 +11,9 @@ export class AuthUserGuard implements CanActivate {
   canActivate() {
     // mandar um request pro backend /login/authtoken
     // se for valido...
-
     const hasToken = localStorage.getItem('TOKEN');
     const jwt = new JwtHelperService();
-    console.log(jwt.decodeToken(hasToken), hasToken);
+    // console.log(jwt.decodeToken(hasToken), hasToken);
 
     if (!hasToken) {
       this.roteamento.navigate(['/login']);
